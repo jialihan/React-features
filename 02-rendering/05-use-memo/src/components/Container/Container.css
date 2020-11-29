@@ -1,0 +1,17 @@
+.Container{
+    margin: 30px auto;
+}
+p {
+    padding: 20px;
+    font-size: 24px;
+    background: gray;
+    width: 100px;
+    margin: 0 auto;
+}
+.Button
+{
+    padding: 10px 10px;
+    background-color: red;
+    color: white;
+    margin: 20px auto;
+}
