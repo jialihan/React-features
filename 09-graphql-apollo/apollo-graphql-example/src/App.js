@@ -1,13 +1,11 @@
 import './App.css';
-import { CollectionsComponent } from './components/CollectionsComponent';
+import { QueryComponent } from './components/QueryComponent';
 
 function App() {
-
-
   return (
     <div className="App">
       <h1>Apollo Client example</h1>
-      <CollectionsComponent />
+      <QueryComponent />
     </div>
   );
 }

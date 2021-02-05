@@ -31,7 +31,7 @@ const HATS_COLLECTION_2 = gql`
   }
 `;
 
-export const CollectionsComponent = () => {
+export const QueryComponent = () => {
   // const { loading, error, data } = useQuery(HATS_COLLECTION);
   const { loading, error, data } = useQuery(HATS_COLLECTION_2,
     {
