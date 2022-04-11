@@ -1,0 +1,29 @@
+.btn-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px;
+}
+.btn {
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: black;
+    font-size: 20px;
+}
+.primary {
+    background-color: rgb(20, 123, 170);
+}
+.secondary {
+    background-color: gainsboro;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    background-color: black;
+    padding: 10px 15px;
+}
