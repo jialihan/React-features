@@ -1,42 +1,57 @@
-import './App.css';
-import { Route, Switch, Link } from 'react-router-dom';
-import Directory from './components/Directory';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/Home.jsx";
+import User from "./components/User.jsx";
+import Admin from "./components/Admin.jsx";
+import Nav from "./components/Nav.jsx";
+import Manage from "./components/Manage.jsx";
+import RedirectHandler from "./components/RedirectHandler.jsx";
+import { AuthContextProvider } from "./context/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import RoleSelector from "./components/RoleSelector.jsx";
 
-
-const HomePage = (props) => {
-  console.log(props);
-  return (<div>
-    {/* <Link to='/profile'> Profile</Link>
-    <h1>Jelly's Home Page</h1>
-    <button onClick={() => {
-      props.history.push('/profile')
-    }}>
-      navigate to Profile
-    </button> */}
-    <Directory />
-  </div>)
-}
-
-const ProfilePage = (props) => {
-  return (<div><h1>Jelly's Profile Page</h1>
-    <Link to={`${props.match.url}/1`}>To Profile 1 </Link>
-    <Link to={`${props.match.url}/2`}>To Profile 2 </Link>
-    <Link to={`${props.match.url}3`}>To Profile 3 </Link>
-  </div>);
-}
-const ProfileDetailPage = (props) => {
-  console.log(props);
-  return (<div><h1>Profile Detail Page: {props.match.params.profileId}</h1></div>)
-}
 function App() {
   return (
-    <div>
-      <Switch>
-        <Route exact path='/profile' component={ProfilePage} />
-        <Route path='/profile/:profileId' component={ProfileDetailPage} />
-        <Route path='/' component={HomePage} />
-      </Switch>
-    </div>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <RoleSelector />
+        <Nav />
+        <Routes>
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <ProtectedRoute>
+                <User />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/manage"
+            element={
+              <ProtectedRoute>
+                <Manage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <RedirectHandler>
+                <Home />
+              </RedirectHandler>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthContextProvider>
   );
 }
 

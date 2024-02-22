@@ -1,70 +1,34 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+# React router v6 - demo
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### features implemented
 
-### `npm test`
+#### 1. Context API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`<AuthContextProvider />` provides the `role` state globally, you can use `useAuthContext()` hook to access the value.
 
-### `npm run build`
+#### 2. useNavigate() hook
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- landing on `Home` page (`"/"` default route), auto redirect based on initial `role="ADMIN"`, `<RedirectHandler />` will redirect to the correcting route, eg: `/admin` in this example.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+<Navigate to={redirectUrl} replace />
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 3. Guard the content based on role
 
-### `npm run eject`
+`<ProtectedRoute />` validates each Route, if you don't have access, hide the context.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `useLocation()` hook
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Helpful links:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- https://reactrouter.com/en/main/router-components/browser-router
+- article: https://bartlomiejperucki.medium.com/handling-role-based-redirect-with-react-and-react-router-35f822242bbf
+- sandbox example:https://codesandbox.io/p/sandbox/epic-bash-uwhel?file=%2Fsrc%2Fviews%2Findex.tsx%3A13%2C1-22%2C25&from-embed=
+- navigate: https://reactrouter.com/en/main/components/navigate
+- external UI library: https://mui.com/material-ui/getting-started/installation/

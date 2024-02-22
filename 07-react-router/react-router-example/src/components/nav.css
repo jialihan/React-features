@@ -1,0 +1,18 @@
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
+  margin-right: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightskyblue;
+  padding: 10px;
+}
+nav > p {
+  margin-right: 20px;
+}
